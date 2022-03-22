@@ -1,2 +1,2 @@
-# food_app
-An app to serve basic API for food app
+# hospital_management system
+An app to serve basic API for hms app
