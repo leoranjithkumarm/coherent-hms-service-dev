@@ -54,8 +54,10 @@ var Master_role = sequelize.define('master_role', {
         createdby      :{type: Sequelize.SMALLINT, allowNull: false },
         updatedby      :{type: Sequelize.SMALLINT, allowNull: true}
  });
-
+// agin test
 sequelize.sync();
+
+// github test
 
 //Export initialised models
 module.exports = {

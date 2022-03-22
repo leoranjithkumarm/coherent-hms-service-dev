@@ -1,14 +1,22 @@
 {
-  "name": "hmsdev",
+  "name": "coherent-hms-service-dev",
   "version": "1.0.0",
-  "description": "HOSPITAL MANAGEMENT SYSTEM app",
+  "description": "",
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koodalingamraja/coherent-hms-service-dev.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koodalingamraja/coherent-hms-service-dev/issues"
+  },
+  "homepage": "https://github.com/koodalingamraja/coherent-hms-service-dev#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
@@ -19,8 +27,5 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.17.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
   }
 }
