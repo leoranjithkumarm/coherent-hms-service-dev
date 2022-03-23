@@ -3,10 +3,10 @@ global.Sequelize = require('sequelize');
 
     //Connnecting to database
 const sequelize = new Sequelize({
-        username : 'root',
-        password : 'Ranjith@15',
-        database : 'hmsdev',
-        host: 'localhost',
+        username : 'remote',
+        password : 'coherent@123',
+        database : 'coherent_hms_dev',
+        host: '95.217.209.135',
         dialect: 'mysql',
         logging: false
     })
@@ -24,8 +24,8 @@ var master_specialists = sequelize.define("master_specialists",
         speciallation_name: { type: Sequelize.STRING, allowNull: false },
         speciallation_code: { type: Sequelize.STRING, allowNull: false },
         speciallation_type: { type: Sequelize.STRING, allowNull: false },
-        is_active:          { type: Sequelize.TINYINT, allowNull: true },
-        deleted_flag:       { type: Sequelize.TINYINT, allowNull: true },
+        is_active:          { type: Sequelize.TINYINT, default : true,allowNull: true },
+        deleted_flag:       { type: Sequelize.TINYINT, default : true,allowNull: true },
         createdby:          { type: Sequelize.SMALLINT, allowNull: false },
         updatedby:          { type: Sequelize.SMALLINT, allowNull: true}
     });
@@ -38,30 +38,32 @@ var users = sequelize.define("users",
         email_id:           { type: Sequelize.STRING, allowNull: false },
         user_random_number: { type: Sequelize.STRING, allowNull: false },
         mobile_number:      { type: Sequelize.STRING, allowNull: false },
-        is_active:          { type: Sequelize.TINYINT, allowNull: true },
-        deleted_flag:       { type: Sequelize.TINYINT, allowNull: true },
+        gender:             { type: Sequelize.STRING, allowNull: false },
+        education:          { type: Sequelize.STRING, allowNull: true },
+        experience:         { type: Sequelize.STRING, allowNull: true },
+        is_doctor:          { type: Sequelize.TINYINT, allowNull: true },
+        is_active:          { type: Sequelize.TINYINT, default : true,allowNull: true },
+        deleted_flag:       { type: Sequelize.TINYINT, default : true,allowNull: true },
         createdby:          { type: Sequelize.SMALLINT, allowNull: false },
         updatedby:          { type: Sequelize.SMALLINT, allowNull: true}
     });
-    
-var Master_role = sequelize.define('master_role', {
 
-     role_name         :{type:Sequelize.STRING,allowNull:false},
-     role_code         :{type:Sequelize.STRING,allowNull:false},
-     role_desc         :{type:Sequelize.STRING,allowNull:false},
-     is_active         :{type: Sequelize.TINYINT, allowNull: true },
-        deleted_flag   :{type: Sequelize.TINYINT, allowNull: true },
-        createdby      :{type: Sequelize.SMALLINT, allowNull: false },
-        updatedby      :{type: Sequelize.SMALLINT, allowNull: true}
- });
-// agin test
+
+var doctor_specialist_mapping = sequelize.define("doctor_specialist_mapping", 
+    {
+        user_id_fk:         { type: Sequelize.SMALLINT, allowNull: false },
+        specialist_id_fk:   { type: Sequelize.SMALLINT, allowNull: false },
+        is_active:          { type: Sequelize.TINYINT, default : true,allowNull: true },
+        deleted_flag:       { type: Sequelize.TINYINT, default : true,allowNull: true },
+        createdby:          { type: Sequelize.SMALLINT, allowNull: false },
+        updatedby:          { type: Sequelize.SMALLINT, allowNull: true}
+    });
+
 sequelize.sync();
-
-// github test
 
 //Export initialised models
 module.exports = {
     Master_specialists : master_specialists,
     Users : users,
-    Master_role: Master_role
+    Doctor_specialist_mapping : doctor_specialist_mapping
 };

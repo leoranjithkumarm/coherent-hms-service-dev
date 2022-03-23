@@ -9,14 +9,13 @@ router.use(bodyParser.json());
 
 //User register - POST 
 
-    router.post('/rolecreate',function (req, res) { 
-	var request = req.body;
-    var role=req.body;
-    for(let i=0; i< role.length; i++){
-	Master_role.create(role[i])
 
-	}res.send("User created successfully");	
-}) 
+router.post('/create',function (req, res) {  
+	var request = req.body;	
+	Master_role.create(request).then(function(user){
+		res.send("Master_role created successfully");	
+	})
+})
 
 // GET user
 router.get('/',function (req, res) { 

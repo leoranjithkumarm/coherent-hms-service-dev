@@ -1,5 +1,5 @@
 var app = require('./api.js');
-var port = 8000;
+var port = 5000;
 var http = require('http');
 
 // Listen HTTP server on port 8080

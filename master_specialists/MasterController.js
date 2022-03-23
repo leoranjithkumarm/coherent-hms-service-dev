@@ -8,13 +8,12 @@ var Master_specialists = __db.Master_specialists;
 
 router.use(bodyParser.json());
 
-router.post('/multiple',function (req, res) {
-  var request = req.body;
-  var master= req.body
-  for( let i=0; i < user.length; i++){
-	Master_specialists.create(master[i])
-	
-	}res.send("Master_specialists created successfully");
+
+router.post('/new',function (req, res) {  
+	var request = req.body;
+	Master_specialists.create(request).then(function(Master_specialists){
+		res.send("Master_specialists created successfully");
+	})
 });
 
 router.get('/',function(req,res){
