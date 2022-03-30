@@ -12,12 +12,14 @@ router.use(bodyParser.json());
 router.post('/new',function (req, res) {  
 	var request = req.body;
 	Master_specialists.create(request).then(function(Master_specialists){
-		res.send("Master_specialists created successfully");
+    console.log("data",Master_specialists)
+    res.status(200).send("Master_specialists created successfully")
+		// res.send("");
 	})
 });
 
 router.get('/',function(req,res){
-  Master_specialists.findAll().then(function(Master_specialists){
+  Master_specialists.findAll({where:{is_active:'1'}}).then(function(Master_specialists){
     return res.send(Master_specialists);
   })
 });
@@ -35,4 +37,10 @@ router.put('/deactivate/:id',function (req, res) {
 	})
 });
 
-module.exports = router;
+router.put('/update/data/code/:id',function (req, res) {
+  console.log(req.params.id,"Updated")
+  Master_specialists.update({speciallation_code:req.body.speciallation_code},{where:{id:req.params.id}}).then(function (Master_specialists) {
+        if(Master_specialists > 0) {res.send("Specilazation Code updated")}
+  })
+});
+module.exports = router
