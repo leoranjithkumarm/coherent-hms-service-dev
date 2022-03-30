@@ -1,6 +1,15 @@
 var express = require('express');
-var app = express();
+var app = express();var cors = require("cors");
+var cors = require("cors");
+const corsOpts = {
+  origin: "*",
 
+  methods: ["GET", "POST"],
+
+  allowedHeaders: ["Content-Type"],
+};
+
+  app.use(cors(corsOpts));
 // Declaring global values to handle file and DB module
 global.__root   = __dirname + '/';
 global.__db   = require(__dirname + '/db.js');

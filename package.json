@@ -20,6 +20,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
     "deepmerge": "^4.2.2",
     "dotenv": "^16.0.0",
     "edit-json-file": "^1.7.0",
