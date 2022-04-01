@@ -22,9 +22,9 @@ app.use('/api/master', MasterManagementController);
 var UserManagementController = require(__root + 'users/UserController.js');
 app.use('/api/users', UserManagementController);
 
-// Master_role Controller API base
-var Master_role = require(__root + 'Master_role/Master_roleController.js');
-app.use('/api/role', Master_role);
+// Admin Controller API base
+var AdminController = require(__root + 'admin/AdminController.js');
+app.use('/api/admin', AdminController);
 
 
 module.exports = app;

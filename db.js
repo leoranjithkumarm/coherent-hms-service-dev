@@ -59,11 +59,72 @@ var doctor_specialist_mapping = sequelize.define("doctor_specialist_mapping",
         updatedby:          { type: Sequelize.SMALLINT, allowNull: true}
     });
 
+
+    var Patient_personal_details = sequelize.define("Patient_personal_details", 
+    {
+        first_name:{type:Sequelize.STRING, allowNull: false },
+        last_name:{type:Sequelize.STRING, allowNull: false },
+        age:{type:Sequelize.STRING, allowNull: false },              
+        mobile_number:{type:Sequelize.STRING, allowNull: false },
+        email:{type:Sequelize.STRING, allowNull: false },
+        gender:{type:Sequelize.STRING, allowNull: false },         
+        is_active:{ type: Sequelize.TINYINT, default : true,allowNull: true },
+        deleted_flag:{type: Sequelize.TINYINT, default : true,allowNull: true },      
+        createdby:{type:Sequelize.SMALLINT, default : 200,allowNull: true },
+        updatedby:{type:Sequelize.SMALLINT, default : 200,allowNull: true}
+    });
+
+    
+    var Patient_medical_history = sequelize.define("Patient_medical_history", 
+    {
+        patient_id_fk:{type:Sequelize.STRING, allowNull: false }, 
+        height:{type:Sequelize.STRING, allowNull: false },
+        weight:{type:Sequelize.STRING, allowNull: false },
+        sugar_level:{type:Sequelize.STRING, allowNull: false },
+        bp_level:{type:Sequelize.STRING, allowNull: false },       
+        heamoglobin_level:{type:Sequelize.STRING, allowNull: false },             
+        is_active:{ type: Sequelize.TINYINT, default : true,allowNull: true },
+        deleted_flag:{type: Sequelize.TINYINT, default : true,allowNull: true },      
+        createdby:{type:Sequelize.SMALLINT, default : 200,allowNull: true },
+        updatedby:{type:Sequelize.SMALLINT, default : 200,allowNull: true}
+    });
+
+
+    var Patient_address_details = sequelize.define("Patient_address_details", 
+    {
+        patient_id_fk:{type:Sequelize.STRING, allowNull: false },
+        door_no:{type:Sequelize.STRING, allowNull: false },
+        street_name:{type:Sequelize.STRING, allowNull: false },
+        city_name:{type:Sequelize.STRING, allowNull: false },
+        state_name:{type:Sequelize.STRING, allowNull: false },       
+        landmark:{type:Sequelize.STRING, allowNull: false },
+        description:{type:Sequelize.STRING, allowNull: false },              
+        is_active:{ type: Sequelize.TINYINT, default : true,allowNull: true },
+        deleted_flag:{type: Sequelize.TINYINT, default : true,allowNull: true },      
+        createdby:{type:Sequelize.SMALLINT, default : 200,allowNull: true },
+        updatedby:{type:Sequelize.SMALLINT, default : 200,allowNull: true}
+    });
+
+    
+var Doctor_mapping = sequelize.define("Doctor_mapping", 
+{
+    user_id_fk:         { type: Sequelize.SMALLINT, allowNull: false },
+    patient_id_fk:   { type: Sequelize.SMALLINT, allowNull: false },
+    is_active:          { type: Sequelize.TINYINT, default : true,allowNull: true },
+    deleted_flag:       { type: Sequelize.TINYINT, default : true,allowNull: true },
+    createdby:          { type: Sequelize.SMALLINT, allowNull: true },
+    updatedby:          { type: Sequelize.SMALLINT, allowNull: true}
+});
+
 sequelize.sync();
 
 //Export initialised models
 module.exports = {
     Master_specialists : master_specialists,
     Users : users,
-    Doctor_specialist_mapping : doctor_specialist_mapping
+    Doctor_specialist_mapping : doctor_specialist_mapping,
+    Patient_personal_details:Patient_personal_details,
+    Patient_medical_history:Patient_medical_history,
+    Patient_address_details:Patient_address_details,
+    Doctor_mapping:Doctor_mapping
 };

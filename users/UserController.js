@@ -166,7 +166,7 @@ router.put('/deactivate/:id',function (req, res) {
             if( x < user.length ) {
               Doctor_specialist_mapping.findOne({where:{user_id_fk:user[x].id},attributes:['specialist_id_fk']}).then(function(map_data){
                 console.log(map_data.specialist_id_fk)
-                Master_specialists.findOne({where:{id:map_data.specialist_id_fk},attributes:['speciallation_name']}) .then(function(res){
+                Master_specialists.findOne({where:{id:map_data.specialist_id_fk},attributes:['user_name']}) .then(function(res){
                   var data = {
                     "id":user[x].id,
                   //  "user_random_number":user[x].user_random_number,
